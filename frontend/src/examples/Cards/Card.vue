@@ -4,7 +4,7 @@
       <div class="d-flex" :class="directionReverse ? reverseDirection : ''">
         <div>
           <div class="text-center icon icon-shape"
-           :class="`${iconBackground} ${this.$store.state.isRTL ? 'border-radius-md' : 'border-radius-2xl'}`">
+           :class="`${iconBackground} ${'border-radius-2xl'}`">
             <i class="text-lg opacity-10" :class="iconClass" aria-hidden="true"></i>
           </div>
         </div>

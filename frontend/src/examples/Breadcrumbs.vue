@@ -2,7 +2,7 @@
   <nav aria-label="breadcrumb">
     <ol
       class="px-0 pt-1 pb-0 mb-0 bg-transparent breadcrumb"
-      :class="`${this.$store.state.isRTL ? '' : ' me-sm-6'} ${this.$store.state.isNavFixed ? 'text-dark' : 'text-white' }`"
+      :class="`${' me-sm-6'} ${this.$store.state.isNavFixed ? 'text-dark' : 'text-white' }`"
     >
       <li class="text-sm breadcrumb-item">
         <a

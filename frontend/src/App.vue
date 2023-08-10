@@ -7,7 +7,7 @@
     :custom_class="this.$store.state.mcolor"
     :class="[
       this.$store.state.isTransparent,
-      this.$store.state.isRTL ? 'fixed-end' : 'fixed-start'
+      'fixed-start'
     ]"
     v-if="this.$store.state.showSidenav"
   />
