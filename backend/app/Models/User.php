@@ -67,12 +67,12 @@ class User extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
-    public function getProfile($profileId){
+    public function profile($profileId){
 
         return Profile::find($profileId);
     }
 
-    public function getProfiles(){
+    public function profiles(){
 
         return $this->hasMany(Profile::class);
     }

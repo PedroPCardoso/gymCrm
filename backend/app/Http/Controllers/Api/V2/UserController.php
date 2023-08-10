@@ -20,40 +20,16 @@ class UserController extends Controller
     public function show(Request $request)
     {
 
-        $http = new Client(['verify' => false]);
-        $headers = $this->parseHeaders($request->header());
-
-        $headers = [
-            'Accept' => 'application/vnd.api+json',
-            'Authorization' => $headers['authorization']
-        ];
-
         $input = $request->json()->all();
         $input['data']['id'] = (string)auth()->id();
         $input['data']['type'] = 'users';
 
-        $data = [
-            'headers' => $headers,
-            'query' => $request->query()
-        ];
-
         try {
-            $response = $http->get(route('v2.users.show', ['user' => auth()->id()]), $data);
-            return response()->json("teste");
+            $user = User::find($input['data']['id']);
+            return response()->json(["data" => $user, "status" => 200, "success" => true]);
 
-            $responseBody = json_decode((string)$response->getBody(), true);
-            $responseStatus = $response->getStatusCode();
-            $responseHeaders = $this->parseHeaders($response->getHeaders());
-
-            unset($responseHeaders['Transfer-Encoding']);
-
-            return response()->json($responseBody, $responseStatus)->withHeaders($responseHeaders);
         } catch (ClientException $e) {
-            $errors = json_decode($e->getResponse()->getBody()->getContents(), true)['errors'];
-            $errors = collect($errors)->map(function ($error) {
-                return Error::fromArray($error);
-            });
-            return ErrorResponse::make($errors);
+            return response()->json(["status" => 201, "success" => false]);
         }
     }
 

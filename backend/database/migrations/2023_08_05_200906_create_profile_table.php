@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Profile', function (Blueprint $table) {
+        Schema::create('profile', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('company_id');
             $table->timestamps();
         });
     }

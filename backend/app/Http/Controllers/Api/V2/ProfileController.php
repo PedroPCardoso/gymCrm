@@ -12,7 +12,7 @@ use LaravelJsonApi\Core\Responses\ErrorResponse;
 use App\Models\User;
 
 
-class MeController extends Controller
+class ProfileController extends Controller
 {
        /**
      * @param Request $request
@@ -20,23 +20,10 @@ class MeController extends Controller
      */
     public function readProfile(Request $request)
     {
-        // return response()->json("teste");
-
-        $http = new Client(['verify' => false]);
-        $headers = $this->parseHeaders($request->header());
-
-        $headers = [
-            'Accept' => 'application/vnd.api+json',
-            'Authorization' => $headers['authorization']
-        ];
-
-        $input = $request->json()->all();
-        $input['data']['id'] = (string)auth()->id();
-        $input['data']['type'] = 'users';
-
+        $user_id = (string)auth()->id();
         try {
-            $user = User::find($input['data']['id']);
-            return response()->json(["data" => $user , "status" => 200, "success"=>true]);
+            $profile = User::where('id', $user_id)->first()->profiles();
+            return response()->json(["data" => $profile , "status" => 200, "success"=>true]);
         } catch (ClientException $e) {
             return response()->json(["status" => 201, "success" => false]);
 
