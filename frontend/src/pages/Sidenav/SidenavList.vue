@@ -29,8 +29,8 @@
         </div>
         <ul v-if="dropDownStatus">
           <sidenav-item
-            url="/examples/user-profile"
-            :class="getRoute() === 'examples/user-profile' ? 'active' : ''"
+            url="/pages/user-profile"
+            :class="getRoute() === 'pages/user-profile' ? 'active' : ''"
             navText="User Profile"
           >
             <template v-slot:icon>
@@ -38,8 +38,8 @@
             </template>
           </sidenav-item>
           <sidenav-item
-            url="/examples/user-management/list-users"
-            :class="getRoute() === 'examples/users-list' ? 'active' : ''"
+            url="/pages/user-management/list-users"
+            :class="getRoute() === 'pages/users-list' ? 'active' : ''"
             navText="User Management"
           >
             <template v-slot:icon>

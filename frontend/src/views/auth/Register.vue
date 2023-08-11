@@ -128,6 +128,13 @@
                     placeholder="Confirm password"
                     aria-label="Password"
                     :value="user.confirm_password" />
+                    <v-select
+                     label="Select"
+                     :items="gyms"
+                     class="form-select"
+                    variant="underlined"
+                    >
+                    </v-select>
                   <argon-checkbox id="flexCheckDefault" v-model="terms_conditions">
                     <label class="form-check-label" for="flexCheckDefault">
                       I agree the
@@ -158,8 +165,8 @@
   </template>
   
 <script>
-import Navbar from "@/examples/PageLayout/Navbar.vue";
-import AppFooter from "@/examples/PageLayout/Footer.vue";
+import Navbar from "@/pages/PageLayout/Navbar.vue";
+import AppFooter from "@/pages/PageLayout/Footer.vue";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonCheckbox from "@/components/ArgonCheckbox.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
@@ -187,6 +194,7 @@ export default {
             password: '',
             confirm_password: ''
         },
+        gyms:['Millenium','Boxe'],
         terms_conditions: false,
         loadingAdd: false
     }

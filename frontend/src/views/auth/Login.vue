@@ -100,7 +100,7 @@
   </template>
   
 <script>
-import Navbar from "@/examples/PageLayout/Navbar.vue";
+import Navbar from "@/pages/PageLayout/Navbar.vue";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonSwitch from "@/components/ArgonSwitch.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
@@ -144,6 +144,7 @@ export default {
   methods: {
     async handleLogin() {
       try{
+        console.log("handleLogin")
         this.resetApiValidation();
         await this.$store.dispatch("auth/login", this.user);
         this.$router.push({name: "Dashboard"});

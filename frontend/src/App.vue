@@ -35,10 +35,10 @@
   </main>
 </template>
 <script>
-import Sidenav from "./examples/Sidenav";
-import Configurator from "@/examples/Configurator.vue";
-import Navbar from "@/examples/Navbars/Navbar.vue";
-import AppFooter from "@/examples/Footer.vue";
+import Sidenav from "./pages/Sidenav";
+import Configurator from "@/pages/Configurator.vue";
+import Navbar from "@/pages/Navbars/Navbar.vue";
+import AppFooter from "@/pages/Footer.vue";
 import { mapMutations } from "vuex";
 
 export default {

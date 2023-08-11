@@ -16,14 +16,7 @@
               target="_blank"
               >Creative Tim</a
             >
-            and
-            <a
-              href="https://updivision.com"
-              class="font-weight-bold"
-              target="_blank"
-              >UPDIVISION</a
-            >
-            for a better web.
+
           </div>
         </div>
         <div class="col-lg-6">

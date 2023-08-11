@@ -117,11 +117,11 @@
 </template>
 
 <script>
-import Card from "@/examples/Cards/Card.vue";
+import Card from "@/pages/Cards/Card.vue";
 import DeveloperCard from "./components/DeveloperCard.vue";
 import RocketCard from "./components/RocketCard.vue";
-import ActiveUsersChart from "@/examples/Charts/ActiveUsersChart.vue";
-import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
+import ActiveUsersChart from "@/pages/Charts/ActiveUsersChart.vue";
+import GradientLineChart from "@/pages/Charts/GradientLineChart.vue";
 import OrdersCard from "./components/OrdersCard.vue";
 import ProjectCard from "./components/ProjectCard.vue";
 
