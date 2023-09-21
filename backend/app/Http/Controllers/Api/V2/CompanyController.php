@@ -3,30 +3,26 @@
 namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use LaravelJsonApi\Core\Document\Error;
-use GuzzleHttp\Exception\ClientException;
 use LaravelJsonApi\Core\Responses\ErrorResponse;
 use App\Models\User;
-
-
-class ProfileController extends Controller
+use App\Models\Company;
+use Exception;
+class CompanyController extends Controller
 {
        /**
      * @param Request $request
      * @return JsonResponse
      */
-    public function readProfile(Request $request)
+    public function index(Request $request)
     {
-        $user_id = (string)auth()->id();
         try {
-            $profiles = User::where('id', $user_id)->first()->profiles()->get();
-            return response()->json(["data" => $profiles , "status" => 200, "success"=>true]);
-        } catch (ClientException $e) {
+            $companies = Company::all();
+            return response()->json(["data" => $companies, "status" => 200, "success" => true]);
+        } catch (Exception $e) {
             return response()->json(["status" => 201, "success" => false]);
-
         }
     }
 

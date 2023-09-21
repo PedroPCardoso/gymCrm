@@ -129,8 +129,11 @@
                     aria-label="Password"
                     :value="user.confirm_password" />
                     <v-select
-                     label="Select"
+                     label="Escolha sua Academia"
                      :items="gyms"
+                     v-model="user.company"
+                     item-title="name"
+                     item-value="id"
                      class="form-select"
                     variant="underlined"
                     >
@@ -173,6 +176,8 @@ import ArgonButton from "@/components/ArgonButton.vue";
 import formMixin from "../../mixins/form-mixin.js"
 import ValidationError from "../../components/ValidationError.vue";
 import showSwal from "../../mixins/showSwal.js";
+import {getAll} from "@/services/company.service.js";
+
 const body = document.getElementsByTagName("body")[0];
 
 export default {
@@ -192,9 +197,10 @@ export default {
             name: '',
             email: '',
             password: '',
-            confirm_password: ''
+            confirm_password: '',
+            company: ''
         },
-        gyms:['Millenium','Boxe'],
+        gyms:[],
         terms_conditions: false,
         loadingAdd: false
     }
@@ -204,6 +210,7 @@ export default {
     this.$store.state.showNavbar = false;
     this.$store.state.showSidenav = false;
     this.$store.state.showFooter = false;
+    this.getCompanies();
     body.classList.remove("bg-gray-100");
   },
   beforeUnmount() {
@@ -246,6 +253,13 @@ export default {
         });
       }
     },
+    getCompanies(){
+        getAll().then((result) => {
+        console.log(result);
+        this.gyms = result.data;
+
+      });
+    }
   }
 };
 </script>

@@ -139,7 +139,7 @@ export default {
   },
   data() {
     return {
-      title: "Argon Dashboard 2",
+      title: "GymAdmin",
       controls: "dashboardsExamples",
       isActive: "active",
       dropDownStatus: true,

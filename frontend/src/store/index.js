@@ -1,11 +1,13 @@
 import { createStore } from "vuex";
 import { auth } from "./auth.module.js";
 import { profile } from "./profile.module.js";
+import { company } from "./company.module.js";
 
 export default createStore({
   modules: {
     auth,
-    profile
+    profile,
+    company
   },
   state: {
     hideConfigButton: false,

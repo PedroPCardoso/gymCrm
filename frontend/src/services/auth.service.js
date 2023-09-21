@@ -34,6 +34,7 @@ async function register(user) {
     email: user.email,
     password: user.password,
     password_confirmation: user.confirm_password,
+    company: user.company,
   }, {headers});
 
   if (response.data.access_token) {

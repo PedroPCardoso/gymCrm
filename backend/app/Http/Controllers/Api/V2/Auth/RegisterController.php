@@ -8,6 +8,8 @@ use LaravelJsonApi\Core\Document\Error;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Api\V2\Auth\LoginRequest;
 use App\Models\User;
+use App\Models\Company;
+use App\Models\Profile;
 
 class RegisterController extends Controller
 {
@@ -21,12 +23,21 @@ class RegisterController extends Controller
      */
     public function __invoke(RegisterRequest $request): Response|Error
     {
-        User::create([
+        $user = User::create([
             'name'          => $request->name,
             'email'         => $request->email,
             'password'      => $request->password,
         ]);
-
+        
+        if(Company::find($request->company)){            
+            Profile::create([
+                'company_id' => $request->company,
+                'user_id' => $user->id,
+            ]);
+        }
+        else{
+            return new Error;
+        }
         return (new LoginController)(new LoginRequest($request->only(['email', 'password'])));
     }
 }
